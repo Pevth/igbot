@@ -27,10 +27,10 @@ include("login/auth_session.php");
 
 <body>
 
-  <div class="vertical-nav color-sidebar" id="sidebar">
-    <div class="logo-place">
+  <div class="vertical-nav color-sidebar animate__animated animate__fadeInLeft animate__slows" id="sidebar">
+    <a href="index.php"><div class="logo-place">
       <h4 class="m-0 animate__animated animate__fadeIn animate__slower">I G B O T</h4>
-    </div>
+    </div></a>
     <p class="font-weight-bold text-uppercase px-3 small pb-3 mt-4 text-center">Ogólne</p>
     <ul class="nav flex-column mb-0">
       <li class="nav-item">
@@ -93,7 +93,7 @@ include("login/auth_session.php");
   <!-- Page content holder -->
   <div class="page-content" id="content">
 
-<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-config">
+<nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-config animate__animated animate__fadeInDown animate__slows animate__delay-1s">
   <div class="container-fluid">
     <img src="image/menu_btn.png" weight=42px  height=42px id="sidebarCollapse"/>
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -122,17 +122,17 @@ include("login/auth_session.php");
 <div class="container-fluid d-flex p-5" id="content">
 
   <div class="row g-3">
-    <div class="col-1 py-3 px-5">
+    <div class="col-1 py-3 px-5 animate__animated animate__fadeIn animate__slow animate__delay-3s">
       <img src="image/logo.jpg" width="45" height="45"/>
     </div>
     <div class="col-9">
       <div class="p-0 py-1 text-light mb-5">
-        <span class = "head_p">Witaj <?php echo $_SESSION['username']; ?>!</span>
+        <span class = "head_p animate__animated animate__fadeIn animate__delay-2s">Witaj <?php echo $_SESSION['username']; ?>!</span>
         <br>
-        <span class = "underhead_p">Rozpocznij promowanie instagrama w programie IGBOT</span>
+        <span class = "underhead_p animate__animated animate__fadeIn animate__delay-3s">Rozpocznij promowanie instagrama w programie IGBOT</span>
       </div>
     </div>
-    <div class="col-2 mb-0 py-3">
+    <div class="col-2 mb-0 py-3 animate__animated animate__fadeIn animate__delay-2s">
       <p class = "underhead_p">Nazwa programu: IGBOT - Arct comp.</p>
       <p class = "underhead_p">ostatnia aktualizacja: 10.08</p>
       <p class = "underhead_p">wersja: beta 1.1</p>
@@ -142,7 +142,7 @@ include("login/auth_session.php");
 
 
     <div class="col-xxl-2 col-sm-6">
-      <div class="p-4 box_1 text-centers">
+      <div class="p-4 box_1 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
         <span class="big_letter">120 </span><sup>obserwujących</sup>
@@ -150,28 +150,28 @@ include("login/auth_session.php");
       </div>
     </div>
     <div class="col-xxl-2 col-sm-6">
-      <div class="p-4 box_2 text-center">
+      <div class="p-4 box_2 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost tygodniowy</span>
         <hr class="my-3">
         <span class="big_letter">576 </span><sup>obserwujących</sup>
       </div>
 
     </div>
-    <div class="col-xxl-2 text-center col-sm-6">
+    <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box_3">
         <span class="upper_letter">Współczynnik przyrostu</span>
         <hr class="my-3">
       <span class="big_letter">0,14   </span><sup>na obserwowanego</sup>
     </div>
     </div>
-    <div class="col-xxl-2 text-center col-sm-6">
+    <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box_4">
         <span class="upper_letter">Statystyki ogólne</span>
         <hr class="my-3">
         <span class="big_letter">2312 </span><sup>obserwujących</sup>
       </div>
     </div>
-    <div class="col-xxl-4">
+    <div class="col-xxl-4 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box_5"><span class="upper_letter">Dane ogólne</span>
       <hr class="my-3">
       <div class="box_letter">
@@ -183,21 +183,21 @@ include("login/auth_session.php");
     </div>
     </div>
 
-    <div class="col-4">
+    <div class="col-4 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
 
 Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentesque commodo sed magna eget semper. Donec ultrices dictum leo at imperdiet. Mauris tristique augue diam, eu blandit nibh pellentesque vitae. Fusce facilisis libero ut erat pharetra, congue malesuada sem mattis. Fusce blandit ex vel cursus faucibus. In laoreet eu purus in suscipit. Curabitur viverra orci vitae orci mollis auctor.</div>
     </div>
 
-    <div class="col-8">
+    <div class="col-8 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
 
 Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentesque commodo sed magna eget semper. Donec ultrices dictum leo at imperdiet. Mauris tristique augue diam, eu blandit nibh pellentesque vitae. Fusce facilisis libero ut erat pharetra, congue malesuada sem mattis. Fusce blandit ex vel cursus faucibus. In laoreet eu purus in suscipit. Curabitur viverra orci vitae orci mollis auctor.</div>
     </div>
-    <div class="col-6">
+    <div class="col-6 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-3 box">Lorem ipsum</div>
     </div>
-    <div class="col-6">
+    <div class="col-6 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-3 box">Lorem ipsum</div>
     </div>
 </div>
