@@ -1,0 +1,119 @@
+body {
+  margin: 0;
+  background: #31343c;
+  font-family: 'Roboto', sans-serif;
+}
+.wrapper {
+  background: #31343c;
+  margin-top: 10%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+@media (max-width: 600px) {
+  .wrapper {
+    margin-top: 30%;
+    margin-left: 5%;
+    margin-right: 5%;
+  }
+}
+
+
+.form-signin {
+  border-radius: 10px;
+  background: #31343c;
+  max-width:350px;
+  margin: auto;
+  margin-bottom: 30px;
+  background-color: #fff;
+  -webkit-box-shadow: 0px 0px 60px -23px rgba(0,0,0,0.72);
+  -moz-box-shadow: 0px 0px 60px -23px rgba(0,0,0,0.72);
+  box-shadow: 0px 0px 60px -23px rgba(0,0,0,0.72);
+}
+
+.up_panel{
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+  background: #31343c;
+  font-size: 35px;
+  font-family: 'Megrim', cursive;
+  color: white;
+  padding-top: 20px;
+  padding-bottom: 3px;
+  background-image: linear-gradient( 140deg,  rgba(225,78,203,1) 10.4%, rgba(191,84,241,1) 90.1% );
+}
+
+.down_panel{
+
+}
+
+.form-control{
+  color: #3c3e48;
+  border-top: 0;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 5%;
+  border-color: #3c3e48;
+  border-radius: 0;
+
+}
+
+.form-control:focus{
+  color: #3c3e48;
+  box-shadow: none;
+  border-color: #bf54f1;
+}
+
+.center {
+    display: flex;
+   justify-content: center;
+   align-items: center;
+   padding-bottom: 30px;
+}
+
+.button-control {
+  color: white;
+  margin: auto;
+  background: #d954f1;
+  width: 40%;
+}
+
+.button-control:hover {
+  color: white;
+  margin: auto;
+  background: #bf54f1;
+  width: 50%;
+  transition: 0.3s
+}
+
+
+.button-control_2 {
+  color: white;
+  margin-top: 40px;
+  margin: auto;
+  background: #bf54f1;
+  width: 15%;
+}
+
+.button-control_2:hover {
+  color: white;
+  margin-top: 40px;
+  margin: auto;
+  background: #ad50d9;
+  width: 17%;
+  transition: 0.3s
+}
+
+@media (max-width: 950px) {
+  .button-control_2 {
+    color: white;
+    margin-top: 40px;
+    margin: auto;
+    background: #bf54f1;
+    width: 40%;
+  }
+}
+.under{
+  font-size: 15px;
+  color: white;
+}
