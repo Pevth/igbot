@@ -14,7 +14,7 @@
 </head>
 <body>
 <?php
-    require('../db.php');
+    require('../database/db_web.php');
     // When form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
         // removes backslashes
@@ -32,6 +32,10 @@
         $result   = mysqli_query($con, $query);
         if ($result) {
             echo "<div class='alert alert-success' role='alert'> Pomyślnie zarejestrowano! <a href='login.php' class='alert-link'>Możesz już się zalogować</a> oraz przejśc do panelu. </div>";
+
+            session_start();
+            $_SESSION['register'] = $username;
+            header("Location: ../config/install.php");
         } else {
             echo "<div class='form'>
                   <h3>Required fields are missing.</h3><br/>

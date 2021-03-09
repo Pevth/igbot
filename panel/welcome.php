@@ -2,7 +2,7 @@
 
 <?php
 //include auth_session.php file on all user panel pages
-include("login/auth_session.php");
+include("igbot/panel/login/auth_session.php");
 $name = $_SESSION['username'];
 ?>
 
@@ -142,7 +142,7 @@ $name = $_SESSION['username'];
 
 
     <?php
-      require('db_python.php');
+      require('igbot/panel/database/db_python.php');
       $query    = 'SELECT follow_today, follow_week, f_count, follow FROM info ORDER BY ID DESC LIMIT 1';
       $result = mysqli_query($con_py, $query);
       $row = mysqli_fetch_assoc($result);

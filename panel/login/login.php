@@ -13,9 +13,10 @@
   <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
 </head>
 <body>
+
 <?php
   $test = "<div class='alert alert-danger' role='alert'> Podano złe dane! <a href='login.php' class='alert-link'>zaloguj się jeszcze raz</a> i przejdź do panelu. </div>";
-    require('../db.php');
+    require('../database/db_web.php');
     session_start();
 
     if (isset($_POST['username'])) {
@@ -32,12 +33,13 @@
         if ($rows == 1) {
             $_SESSION['username'] = $username;
 
-            header("Location: ../db_create.php");
+            header("Location: igbot/panel/welcome.php");
         } else {
             echo $test;
         }
       }
 ?>
+
 <div class="wrapper">
 <form class="form-signin animate__animated animate__fadeIn animate__slow" method="post">
   <div class="up_panel shadow-sm">
@@ -62,7 +64,7 @@
 <span class="under py-4"><center>Nie masz jeszcze konta?</center></span>
 </div>
 <div class="center">
-<button class="btn button-control_2 mt-2 animate__animated animate__fadeIn animate__delay-3s animate__slower" onclick="window.location.href='/panel/login/registration.php'">Zarejestruj się</button>
+<button class="btn button-control_2 mt-2 animate__animated animate__fadeIn animate__delay-3s animate__slower" onclick="window.location.href='registration.php'">Zarejestruj się</button>
 </div>
 </div>
 
