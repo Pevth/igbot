@@ -9,24 +9,36 @@ $name = $_SESSION['username'];
 <html lang="en">
 <head>
   <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>I G B O T</title>
 
-  <title>The HTML5 Herald</title>
 
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
-<link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
-<link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap" rel="stylesheet">
-<script src="https://kit.fontawesome.com/c276789111.js" crossorigin="anonymous"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Roboto&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Julius+Sans+One&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Megrim&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap" rel="stylesheet">
+  <script src="https://kit.fontawesome.com/c276789111.js" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
 
 </head>
-
 <body>
+
+  <?php
+    require('database/db_web.php');
+    $query  = 'SELECT `version`, `date` FROM config ORDER BY ID DESC LIMIT 1';
+    $result_ver = mysqli_query($con_web, $query);
+    $row_ver = mysqli_fetch_assoc($result_ver);
+
+    require('database/db_python.php');
+    $query  = 'SELECT `user_ig`, `follow_today`, `follow_week` ,`date` , `f_count`, `follow` FROM info ORDER BY ID DESC LIMIT 1';
+    $result_stats = mysqli_query($con_py, $query);
+    $row_stats = mysqli_fetch_assoc($result_stats);
+  ?>
 
 
   <div class="vertical-nav color-sidebar animate__animated animate__fadeInLeft animate__slows" id="sidebar">
@@ -89,7 +101,7 @@ $name = $_SESSION['username'];
               </a>
       </li>
     </ul>
-    <div class ="information"> [nazwa firmy] Copyright </div>
+    <div class ="information " style="color: #848c94;"> IGBOT - Copyright ©</div>
   </div>
   <!-- End vertical navbar -->
   <!-- Page content holder -->
@@ -124,72 +136,65 @@ $name = $_SESSION['username'];
 <div class="container-fluid d-flex p-5" id="content">
 
   <div class="row g-3">
-    <div class="col-1 py-3 px-5 animate__animated animate__fadeIn animate__slow animate__delay-3s">
-      <img src="image/logo.jpg" width="45" height="45"/>
-    </div>
-    <div class="col-9">
-      <div class="p-0 py-1 text-light mb-5">
+    <div class="col-xl-8 col-lg-5 col-12">
+      <div class="p-0 py-1 text-light mb-5 mb-sm-0">
         <span class = "head_p animate__animated animate__fadeIn animate__delay-2s">Witaj <?php echo $name; ?>!</span>
         <br>
         <span class = "underhead_p animate__animated animate__fadeIn animate__delay-3s">Rozpocznij promowanie instagrama w programie IGBOT</span>
       </div>
     </div>
-    <div class="col-2 mb-0 py-3 animate__animated animate__fadeIn animate__delay-2s">
-      <p class = "underhead_p">Nazwa programu: IGBOT - Arct comp.</p>
-      <p class = "underhead_p">ostatnia aktualizacja: 10.08</p>
-      <p class = "underhead_p">wersja: beta 1.1</p>
+
+    <div class="col-xl-4 col-lg-7 col-md-7 mb-0 py-3 animate__animated animate__fadeIn animate__delay-2s zuwaczka">
+      <p class = "underhead_p">ostatnia aktualizacja: <?php echo $row_ver["date"]; ?></p>
+      <p class = "underhead_p">Nazwa: IGBOT - Arct comp.</p>
+      <p class = "underhead_p">wersja: <?php echo $row_ver["version"]; ?></p>
     </div>
 
-
-    <?php
-      require('database/db_python.php');
-      $query    = 'SELECT follow_today, follow_week, f_count, follow FROM info ORDER BY ID DESC LIMIT 1';
-      $result = mysqli_query($con_py, $query);
-      $row = mysqli_fetch_assoc($result);
-     ?>
-
-
-    <div class="col-xxl-2 col-sm-6">
+    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-12">
       <div class="p-4 box_1 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
-        <span class="big_letter"><?php echo $row["follow_today"]; ?> </span><sup> obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow_today"]; ?> </span><sup> obserwujących</sup>
 
       </div>
     </div>
-    <div class="col-xxl-2 col-sm-6">
+    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-12">
       <div class="p-4 box_2 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost tygodniowy</span>
         <hr class="my-3">
-        <span class="big_letter"><?php echo $row["follow_week"]; ?> </span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow_week"]; ?> </span><sup> obserwujących</sup>
       </div>
 
     </div>
-    <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-4 box_3">
-        <span class="upper_letter">Współczynnik przyrostu</span>
+    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+      <div class="p-4 box_3 text-center animate__animated animate__fadeIn animate__delay-5s">
+        <span class="upper_letter">Współczynnik</span>
         <hr class="my-3">
-      <span class="big_letter"><?php echo round(($row["follow_today"]/$row["f_count"]), 2); ?>  </span><sup>na obserwowanego</sup>
+      <span class="big_letter"><?php echo round(($row_stats["follow_today"]/$row_stats["f_count"]), 2); ?>  </span><sup> na obserwowanego</sup>
     </div>
     </div>
-    <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-4 box_4">
+    <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-12">
+      <div class="p-4 box_4 text-center animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Statystyki ogólne</span>
         <hr class="my-3">
-        <span class="big_letter"><?php echo $row["follow"]; ?> </span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow"]; ?> </span><sup> obserwujących</sup>
       </div>
     </div>
     <div class="col-xxl-4 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box_5"><span class="upper_letter">Dane ogólne</span>
       <hr class="my-3">
       <div class="box_letter">
-        <span>Nazwa konta: @redd_py</span>
+        <span>Nazwa konta: @<?php echo $row_stats["user_ig"]; ?></span>
         <br>
-        <span>Dołączono: 17.09.2021</span>
+        <span>Dołączono: <?php echo $row_stats["date"]; ?></span>
         <br>
       </div>
     </div>
     </div>
+
+    <?php
+      $con_py -> close();
+    ?>
 
     <div class="col-4 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
@@ -218,9 +223,6 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
 
-<?php
-  $mysqli -> close();
-?>
 
 </body>
 </html>

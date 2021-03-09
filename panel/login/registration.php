@@ -20,7 +20,7 @@
         $username = strtolower($username);
         $user = strtolower($username);
         $query = "SELECT username FROM users WHERE username = '$user'";
-        if ($result = mysqli_query($con,$query))
+        if ($result = mysqli_query($con_web,$query))
         {
           $rowcount = mysqli_num_rows($result);
         }
@@ -31,13 +31,13 @@
 
         else
         {
-          $username = mysqli_real_escape_string($con, $username);
+          $username = mysqli_real_escape_string($con_web, $username);
           $email    = stripslashes($_REQUEST['email']);
           $email = strtolower($email);
           $em = strtolower($email);
 
           $query = "SELECT email FROM users WHERE email = '$em'";
-          if ($result = mysqli_query($con,$query))
+          if ($result = mysqli_query($con_web,$query))
           {
             $rowcount = mysqli_num_rows($result);
           }
@@ -47,13 +47,13 @@
           }
           else
           {
-            $email    = mysqli_real_escape_string($con, $email);
+            $email    = mysqli_real_escape_string($con_web, $email);
             $password = stripslashes($_REQUEST['password']);
-            $password = mysqli_real_escape_string($con, $password);
+            $password = mysqli_real_escape_string($con_web, $password);
             $create_datetime = date("Y-m-d H:i:s");
             $query    = "INSERT into `users` (username, password, email, create_datetime)
                          VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
-            $result   = mysqli_query($con, $query);
+            $result   = mysqli_query($con_web, $query);
             if ($result) {
                 echo "<div class='alert alert-success' role='alert'> Pomyślnie zarejestrowano! <a href='login.php' class='alert-link'>Możesz już się zalogować</a> oraz przejśc do panelu. </div>";
 

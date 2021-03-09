@@ -22,13 +22,13 @@
     if (isset($_POST['username'])) {
         $username = stripslashes($_REQUEST['username']);
         $username = strtolower($username);
-        $username = mysqli_real_escape_string($con, $username);
+        $username = mysqli_real_escape_string($con_web, $username);
         $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($con, $password);
+        $password = mysqli_real_escape_string($con_web, $password);
 
         $query    = "SELECT * FROM `users` WHERE username='$username'
                      AND password='" . md5($password) . "'";
-        $result = mysqli_query($con, $query) or die(mysql_error());
+        $result = mysqli_query($con_web, $query) or die(mysql_error());
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
             $_SESSION['username'] = $username;
