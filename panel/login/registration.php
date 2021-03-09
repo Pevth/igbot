@@ -19,6 +19,7 @@
     if (isset($_REQUEST['username'])) {
         // removes backslashes
         $username = stripslashes($_REQUEST['username']);
+        $username = strtolower($username);
         //escapes special characters in a string
         $username = mysqli_real_escape_string($con, $username);
         $email    = stripslashes($_REQUEST['email']);
@@ -47,7 +48,7 @@
       <br>
       <div ="down_panel">
         <div class="form-floating mb-3 col-9 mx-auto">
-          <input type="text" class="form-control" id="floatingInput" name="username" placeholder="example" required="required">
+          <input type="text" class="form-control login" id="floatingInput" name="username" placeholder="example" required="required">
           <label for="floatingInput">Nazwa użytkownika</label>
         </div>
 

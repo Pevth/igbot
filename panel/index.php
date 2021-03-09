@@ -142,7 +142,7 @@ include("login/auth_session.php");
 
 
     <div class="col-xxl-2 col-sm-6">
-      <div class="p-4 box_1 text-centers">
+      <div class="p-4 box_1 text-center">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
         <span class="big_letter">120 </span><sup>obserwujących</sup>
