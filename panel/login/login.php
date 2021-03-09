@@ -32,7 +32,7 @@
         if ($rows == 1) {
             $_SESSION['username'] = $username;
 
-            header("Location: ../welcome.php");
+            header("Location: ../db_create.php");
         } else {
             echo $test;
         }

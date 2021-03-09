@@ -3,8 +3,7 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("login/auth_session.php");
-require('../db_python.php');
-session_start();
+$name = $_SESSION['username'];
 ?>
 
 <html lang="en">
@@ -29,12 +28,6 @@ session_start();
 
 <body>
 
-  <?php
-
-              $query    = "Select follow_day FROM peev_info ORDER BY ID DESC LIMIT 1";
-              $result   = mysqli_query($con, $query);
-
-   ?>
 
   <div class="vertical-nav color-sidebar animate__animated animate__fadeInLeft animate__slows" id="sidebar">
     <a href="index.php"><div class="logo-place">
@@ -136,7 +129,7 @@ session_start();
     </div>
     <div class="col-9">
       <div class="p-0 py-1 text-light mb-5">
-        <span class = "head_p animate__animated animate__fadeIn animate__delay-2s">Witaj <?php echo $_SESSION['username']; ?>!</span>
+        <span class = "head_p animate__animated animate__fadeIn animate__delay-2s">Witaj <?php echo $name; ?>!</span>
         <br>
         <span class = "underhead_p animate__animated animate__fadeIn animate__delay-3s">Rozpocznij promowanie instagrama w programie IGBOT</span>
       </div>
@@ -148,13 +141,19 @@ session_start();
     </div>
 
 
+    <?php
+      require('db_python.php');
+      $query    = 'SELECT follow_today, follow_week, f_count, follow FROM info ORDER BY ID DESC LIMIT 1';
+      $result = mysqli_query($con_py, $query);
+      $row = mysqli_fetch_assoc($result);
+     ?>
 
 
     <div class="col-xxl-2 col-sm-6">
       <div class="p-4 box_1 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
-        <span class="big_letter"><?php echo $result; ?></span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $row["follow_today"]; ?> </span><sup> obserwujących</sup>
 
       </div>
     </div>
@@ -162,7 +161,7 @@ session_start();
       <div class="p-4 box_2 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost tygodniowy</span>
         <hr class="my-3">
-        <span class="big_letter">576 </span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $row["follow_week"]; ?> </span><sup>obserwujących</sup>
       </div>
 
     </div>
@@ -170,14 +169,14 @@ session_start();
       <div class="p-4 box_3">
         <span class="upper_letter">Współczynnik przyrostu</span>
         <hr class="my-3">
-      <span class="big_letter">0,14   </span><sup>na obserwowanego</sup>
+      <span class="big_letter"><?php echo ($row["follow_today"]/$row["f_count"]); ?>  </span><sup>na obserwowanego</sup>
     </div>
     </div>
     <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box_4">
         <span class="upper_letter">Statystyki ogólne</span>
         <hr class="my-3">
-        <span class="big_letter">2312 </span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $row["follow"]; ?> </span><sup>obserwujących</sup>
       </div>
     </div>
     <div class="col-xxl-4 animate__animated animate__fadeIn animate__delay-5s">
@@ -218,5 +217,10 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
   <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
+
+<?php
+  $mysqli -> close();
+?>
+
 </body>
 </html>
