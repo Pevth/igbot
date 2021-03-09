@@ -15,32 +15,58 @@
 <body>
 <?php
     require('../database/db_web.php');
-    // When form submitted, insert values into the database.
     if (isset($_REQUEST['username'])) {
-        // removes backslashes
         $username = stripslashes($_REQUEST['username']);
         $username = strtolower($username);
-        //escapes special characters in a string
-        $username = mysqli_real_escape_string($con, $username);
-        $email    = stripslashes($_REQUEST['email']);
-        $email    = mysqli_real_escape_string($con, $email);
-        $password = stripslashes($_REQUEST['password']);
-        $password = mysqli_real_escape_string($con, $password);
-        $create_datetime = date("Y-m-d H:i:s");
-        $query    = "INSERT into `users` (username, password, email, create_datetime)
-                     VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
-        $result   = mysqli_query($con, $query);
-        if ($result) {
-            echo "<div class='alert alert-success' role='alert'> Pomyślnie zarejestrowano! <a href='login.php' class='alert-link'>Możesz już się zalogować</a> oraz przejśc do panelu. </div>";
+        $user = strtolower($username);
+        $query = "SELECT username FROM users WHERE username = '$user'";
+        if ($result = mysqli_query($con,$query))
+        {
+          $rowcount = mysqli_num_rows($result);
+        }
+        if($rowcount > 0)
+        {
+          echo "<div class='alert alert-danger' role='alert'> Istnieje już użytkownik z takim loginem! </div>";
+        }
 
-            session_start();
-            $_SESSION['register'] = $username;
-            header("Location: ../config/install.php");
-        } else {
-            echo "<div class='form'>
-                  <h3>Required fields are missing.</h3><br/>
-                  <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
-                  </div>";
+        else
+        {
+          $username = mysqli_real_escape_string($con, $username);
+          $email    = stripslashes($_REQUEST['email']);
+          $email = strtolower($email);
+          $em = strtolower($email);
+
+          $query = "SELECT email FROM users WHERE email = '$em'";
+          if ($result = mysqli_query($con,$query))
+          {
+            $rowcount = mysqli_num_rows($result);
+          }
+          if($rowcount > 0)
+          {
+            echo "<div class='alert alert-danger' role='alert'> Istnieje już konto z takim e-mailem! </div>";
+          }
+          else
+          {
+            $email    = mysqli_real_escape_string($con, $email);
+            $password = stripslashes($_REQUEST['password']);
+            $password = mysqli_real_escape_string($con, $password);
+            $create_datetime = date("Y-m-d H:i:s");
+            $query    = "INSERT into `users` (username, password, email, create_datetime)
+                         VALUES ('$username', '" . md5($password) . "', '$email', '$create_datetime')";
+            $result   = mysqli_query($con, $query);
+            if ($result) {
+                echo "<div class='alert alert-success' role='alert'> Pomyślnie zarejestrowano! <a href='login.php' class='alert-link'>Możesz już się zalogować</a> oraz przejśc do panelu. </div>";
+
+                session_start();
+                $_SESSION['register'] = $username;
+                header("Location: ../config/install.php");
+            } else {
+                echo "<div class='form'>
+                      <h3>Required fields are missing.</h3><br/>
+                      <p class='link'>Click here to <a href='registration.php'>registration</a> again.</p>
+                      </div>";
+            }
+          }
         }
     }
 ?>
@@ -62,7 +88,7 @@
         </div>
 
         <div class="form-floating col-9 mx-auto">
-          <input type="email" class="form-control" id="floatingInput" name="email" placeholder="Email Adress" required="required">
+          <input type="email" class="form-control login" id="floatingInput" name="email" placeholder="Email Adress" required="required">
           <label for="floatingPassword">E-mail</label>
         </div>
 
@@ -76,7 +102,7 @@
     <span class="under py-4"><center>Masz już konto?</center></span>
     </div>
     <div class="center">
-    <button class="btn button-control_2 mt-2 animate__animated animate__fadeIn animate__delay-3s animate__slower" onclick="window.location.href='/panel/login/login.php'">Zaloguj się</button>
+    <button class="btn button-control_2 mt-2 animate__animated animate__fadeIn animate__delay-3s animate__slower" onclick="window.location.href='login.php'">Zaloguj się</button>
     </div>
     </div>
 

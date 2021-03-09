@@ -17,15 +17,14 @@ if (mysqli_connect_errno()){
     echo "Błąd połączenia z MySQL: " . mysqli_connect_error();
 }
 
-$query = "CREATE TABLE `config` (
+$createQueries = ["CREATE TABLE `config` (
   `id` int(11) NOT NULL,
   `user_web` varchar(50) NOT NULL,
   `user_ig` varchar(50) NOT NULL,
   `pass_ig` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
-mysqli_query($con, $query);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
 
-$query = "CREATE TABLE `info` (
+"CREATE TABLE `info` (
   `id` int(11) NOT NULL,
   `user_ig` varchar(50) NOT NULL,
   `date` date NOT NULL,
@@ -35,65 +34,51 @@ $query = "CREATE TABLE `info` (
   `f_count` int(11) NOT NULL,
   `l_count` int(11) NOT NULL,
   `c_count` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
-mysqli_query($con, $query);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
 
-$query = "CREATE TABLE `log` (
+"CREATE TABLE `log` (
   `id` int(11) NOT NULL,
   `user_ig` varchar(50) NOT NULL,
   `date` date NOT NULL,
   `type` text NOT NULL,
   `content` varchar(200) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
-mysqli_query($con, $query);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
 
-
-$query = "CREATE TABLE `unfollow` (
+"CREATE TABLE `unfollow` (
   `id` int(11) NOT NULL,
   `user_ig` varchar(50) NOT NULL,
   `f_link` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4";
-mysqli_query($con, $query);
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
 
+"ALTER TABLE `config`
+  ADD PRIMARY KEY (`id`);",
 
-$query = "ALTER TABLE `config`
-  ADD PRIMARY KEY (`id`)";
-mysqli_query($con, $query);
+"ALTER TABLE `info`
+  ADD PRIMARY KEY (`id`);",
 
+"ALTER TABLE `log`
+  ADD PRIMARY KEY (`id`);",
 
-$query = "ALTER TABLE `info`
-  ADD PRIMARY KEY (`id`)";
-mysqli_query($con, $query);
+"ALTER TABLE `unfollow`
+  ADD PRIMARY KEY (`id`);",
 
+"ALTER TABLE `config`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
 
-$query = "ALTER TABLE `log`
-  ADD PRIMARY KEY (`id`)";
-mysqli_query($con, $query);
+"ALTER TABLE `info`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;",
 
+"ALTER TABLE `log`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
 
-$query = "ALTER TABLE `unfollow`
-  ADD PRIMARY KEY (`id`)";
-mysqli_query($con, $query);
+"ALTER TABLE `unfollow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;"];
 
-
-$query = "ALTER TABLE `config`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT";
-mysqli_query($con, $query);
-
-
-$query = "ALTER TABLE `info`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3";
-mysqli_query($con, $query);
-
-
-$query = "ALTER TABLE `log`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT";
-mysqli_query($con, $query);
-
-
-$query = "ALTER TABLE `unfollow`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT";
-mysqli_query($con, $query);
+foreach($createQueries as $createQuery)
+  {
+    $status = $con->query($createQuery);
+    if(!$status) die('Coś poszło nie tak');
+  }
 
 
 if(session_destroy()) {

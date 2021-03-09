@@ -32,8 +32,7 @@
         $rows = mysqli_num_rows($result);
         if ($rows == 1) {
             $_SESSION['username'] = $username;
-
-            header("Location: igbot/panel/welcome.php");
+            header("Location: ../welcome.php");
         } else {
             echo $test;
         }

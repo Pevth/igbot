@@ -2,7 +2,7 @@
 
 <?php
 //include auth_session.php file on all user panel pages
-include("igbot/panel/login/auth_session.php");
+include("login/auth_session.php");
 $name = $_SESSION['username'];
 ?>
 
@@ -142,7 +142,7 @@ $name = $_SESSION['username'];
 
 
     <?php
-      require('igbot/panel/database/db_python.php');
+      require('database/db_python.php');
       $query    = 'SELECT follow_today, follow_week, f_count, follow FROM info ORDER BY ID DESC LIMIT 1';
       $result = mysqli_query($con_py, $query);
       $row = mysqli_fetch_assoc($result);
@@ -169,7 +169,7 @@ $name = $_SESSION['username'];
       <div class="p-4 box_3">
         <span class="upper_letter">Współczynnik przyrostu</span>
         <hr class="my-3">
-      <span class="big_letter"><?php echo ($row["follow_today"]/$row["f_count"]); ?>  </span><sup>na obserwowanego</sup>
+      <span class="big_letter"><?php echo round(($row["follow_today"]/$row["f_count"]), 2); ?>  </span><sup>na obserwowanego</sup>
     </div>
     </div>
     <div class="col-xxl-2 text-center col-sm-6 animate__animated animate__fadeIn animate__delay-5s">
