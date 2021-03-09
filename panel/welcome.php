@@ -3,6 +3,8 @@
 <?php
 //include auth_session.php file on all user panel pages
 include("login/auth_session.php");
+require('../db_python.php');
+session_start();
 ?>
 
 <html lang="en">
@@ -26,6 +28,13 @@ include("login/auth_session.php");
 </head>
 
 <body>
+
+  <?php
+
+              $query    = "Select follow_day FROM peev_info ORDER BY ID DESC LIMIT 1";
+              $result   = mysqli_query($con, $query);
+
+   ?>
 
   <div class="vertical-nav color-sidebar animate__animated animate__fadeInLeft animate__slows" id="sidebar">
     <a href="index.php"><div class="logo-place">
@@ -145,7 +154,7 @@ include("login/auth_session.php");
       <div class="p-4 box_1 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
-        <span class="big_letter">120 </span><sup>obserwujących</sup>
+        <span class="big_letter"><?php echo $result; ?></span><sup>obserwujących</sup>
 
       </div>
     </div>
