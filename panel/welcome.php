@@ -199,7 +199,7 @@ $name = $_SESSION['username'];
     <div class="col-lg-4 col-xl-3 col-12 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
 
-Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentesque commodo sed magna eget semper. Donec ultrices dictum leo at imperdiet. Mauris tristique augue diam, eu blandit nibh pellentesque vitae. Fusce facilisis libero ut erat pharetra, congue malesuada sem mattis. Fusce blandit ex vel cursus faucibus. In laoreet eu purus in suscipit. Curabitur viverra orci vitae orci mollis auctor.</div>
+      </div>
     </div>
 
     <div class="col-lg-8 col-xl-9 col-12 animate__animated animate__fadeIn animate__delay-5s">
@@ -260,16 +260,26 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
         </script>
       </div>
     </div>
-    <div class="col-6 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-3 box">Lorem ipsum</div>
+    <div class="col-12 animate__animated animate__fadeIn animate__delay-5s">
+      <div class="box_6">
+        <table class="table table-borderless">
+          <thead class="table-dark">
+            <tr>
+             <th scope="col">Data</th>
+             <th scope="col">Typ</th>
+             <th scope="col">Opis</th>
+           </tr>
+          </thead>
+          <tbody class="log-table">
+          <?php include 'config/log.php';?>
+          </tbody>
+        </table>
     </div>
-    <div class="col-6 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-3 box">Lorem ipsum</div>
-    </div>
-</div>
 
 </div>
 
+</div>
+</div>
 
 
   <script>
