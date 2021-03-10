@@ -12,6 +12,7 @@ $name = $_SESSION['username'];
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>I G B O T</title>
 
+
   <link rel="stylesheet" href="css/bootstrap.min.css">
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.gstatic.com">
@@ -23,8 +24,7 @@ $name = $_SESSION['username'];
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap" rel="stylesheet">
   <script src="https://kit.fontawesome.com/c276789111.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
-  <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
-  <script type="text/javascript" src="js/Chart.min.js"></script>
+
 </head>
 <body>
 
@@ -109,7 +109,7 @@ $name = $_SESSION['username'];
 
 <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light nav-config animate__animated animate__fadeInDown animate__slows animate__delay-1s">
   <div class="container-fluid">
-    <img src="image/menu_btn.png" onclick="setTimeout('showGraph()', 300);" weight=42px  height=42px id="sidebarCollapse"/>
+    <img src="image/menu_btn.png" weight=42px  height=42px id="sidebarCollapse"/>
     <button class="navbar-toggler ms-auto" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -154,7 +154,7 @@ $name = $_SESSION['username'];
       <div class="p-4 box_1 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost dzienny</span>
         <hr class="my-3">
-        <span class="big_letter text-center-box"><?php echo $row_stats["follow_today"]; ?> </span><sup> obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow_today"]; ?> </span><sup> obserwujących</sup>
 
       </div>
     </div>
@@ -162,7 +162,7 @@ $name = $_SESSION['username'];
       <div class="p-4 box_2 text-center  animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Przyrost tygodniowy</span>
         <hr class="my-3">
-        <span class="big_letter text-center-box"><?php echo $row_stats["follow_week"]; ?> </span><sup> obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow_week"]; ?> </span><sup> obserwujących</sup>
       </div>
 
     </div>
@@ -170,14 +170,14 @@ $name = $_SESSION['username'];
       <div class="p-4 box_3 text-center animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Współczynnik</span>
         <hr class="my-3">
-      <span class="big_letter text-center-box"><?php echo round(($row_stats["follow_today"]/$row_stats["f_count"]), 2); ?>  </span><sup> na obserwowanego</sup>
+      <span class="big_letter"><?php echo round(($row_stats["follow_today"]/$row_stats["f_count"]), 2); ?>  </span><sup> na obserwowanego</sup>
     </div>
     </div>
     <div class="col-xxl-2 col-xl-3 col-lg-6 col-md-6 col-sm-12">
       <div class="p-4 box_4 text-center animate__animated animate__fadeIn animate__delay-5s">
         <span class="upper_letter">Statystyki ogólne</span>
         <hr class="my-3">
-        <span class="big_letter text-center-box"><?php echo $row_stats["follow"]; ?> </span><sup> obserwujących</sup>
+        <span class="big_letter"><?php echo $row_stats["follow"]; ?> </span><sup> obserwujących</sup>
       </div>
     </div>
     <div class="col-xxl-4 animate__animated animate__fadeIn animate__delay-5s">
@@ -196,68 +196,20 @@ $name = $_SESSION['username'];
       $con_py -> close();
     ?>
 
-    <div class="col-lg-4 col-xl-3 col-12 animate__animated animate__fadeIn animate__delay-5s">
+    <div class="col-4 animate__animated animate__fadeIn animate__delay-5s">
       <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
 
 Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentesque commodo sed magna eget semper. Donec ultrices dictum leo at imperdiet. Mauris tristique augue diam, eu blandit nibh pellentesque vitae. Fusce facilisis libero ut erat pharetra, congue malesuada sem mattis. Fusce blandit ex vel cursus faucibus. In laoreet eu purus in suscipit. Curabitur viverra orci vitae orci mollis auctor.</div>
     </div>
 
-    <div class="col-lg-8 col-xl-9 col-12 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-4 box text-center">
-        <span class="upper_letter">Wykres wzrostu obserwujących - [ 7 dni ] </span>
-        <hr class="my-3">
-        <canvas id="chart_follow_week" class="col-12" height="300"></canvas>
-
-        <script  type="text/javascript">
+    <div class="col-8 animate__animated animate__fadeIn animate__delay-5s">
+      <div class="p-4 box">
+          <script>
 
 
-        var ctx = document.getElementById('chart_follow_week').getContext("2d");
-        var gradient = ctx.createLinearGradient(500, 0, 100, 300);
-				gradient.addColorStop(0, "rgba(225,78,203,1)");
-				gradient.addColorStop(1, "rgba(181, 66, 239,1)");
 
-        $(document).ready(function () {
-            showGraph();
-        });
+          </script>
 
-
-        function showGraph()
-        {
-            {
-                $.post("data.php",
-                function (data)
-                {
-                    console.log(data);
-                     var date = [];
-                    var follow = [];
-
-                    for (var i in data) {
-                        date.push(data[i].date);
-                        follow.push(data[i].follow);
-                    }
-
-
-                    var chartdata = {
-                        labels: date,
-                        datasets: [
-                            {
-                                label: 'ilość obserwujących',
-                                borderColor: gradient,
-                                data: follow,
-                            }
-                        ]
-                    };
-
-                    var graphTarget = $("#chart_follow_week");
-
-                    var barGraph = new Chart(graphTarget, {
-                        type: 'line',
-                        data: chartdata,
-                    });
-                });
-            }
-        }
-        </script>
       </div>
     </div>
     <div class="col-6 animate__animated animate__fadeIn animate__delay-5s">
@@ -271,14 +223,11 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
 </div>
 
 
-
-  <script>
-  $( window ).resize(function() {
-  window.location.reload();
-  });
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
+  <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
+  <script src="js/Chart.min.js"></script>
+  <script src="js/jquery.min.js"></script>
   <script src="js/main.js"></script>
 
 

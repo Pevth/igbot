@@ -206,7 +206,7 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
       <div class="p-4 box text-center">
         <span class="upper_letter">Wykres wzrostu obserwujących - [ 7 dni ] </span>
         <hr class="my-3">
-        <canvas id="chart_follow_week" class="col-12" height="300"></canvas>
+        <canvas id="chart_follow_week"></canvas>
 
         <script  type="text/javascript">
 
@@ -271,12 +271,6 @@ Quisque et sodales dolor, sed malesuada tellus. Ut vitae ultrices sem. Pellentes
 </div>
 
 
-
-  <script>
-  $( window ).resize(function() {
-  window.location.reload();
-  });
-  </script>
   <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.6.0/dist/umd/popper.min.js" integrity="sha384-KsvD1yqQ1/1+IA7gi3P0tyJcT3vR+NdBTt13hSJ2lnve8agRGXTTyNaBYmCR/Nwi" crossorigin="anonymous"></script>
   <script src="js/bootstrap.min.js"></script>
   <script src="js/main.js"></script>
