@@ -19,13 +19,6 @@ foreach ($result as $row) {
 
 $c_logs = count($logs);
 
-for($i = 0; $i<($c_logs-1); $i++)
-  {
-      echo "<tr>";
-      echo "<td class='log-td'>".$logs[$i]["date"]."</td>";
-      echo "<td class='log-td'>".$logs[$i]["type"]."</td>";
-      echo "<td class='log-td'>".$logs[$i]["content"]."</td>";
-      echo "</tr>";
-  }
+echo "<pre>".var_dump($logs)."</pre>";
 
 ?>

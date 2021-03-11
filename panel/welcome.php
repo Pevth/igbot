@@ -261,23 +261,18 @@ $name = $_SESSION['username'];
       </div>
     </div>
     <div class="col-12 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="box_6">
+      <div class="box_6 p-4 text-center">
+        <span class="upper_letter">Logi</span>
+        <hr class="my-3">
+        <div class="test">
         <table class="table table-borderless">
-          <thead class="table-dark">
-            <tr>
-             <th scope="col">Data</th>
-             <th scope="col">Typ</th>
-             <th scope="col">Opis</th>
-           </tr>
-          </thead>
           <tbody class="log-table">
           <?php include 'config/log.php';?>
           </tbody>
         </table>
+      </div>
     </div>
-
-</div>
-
+  </div>
 </div>
 </div>
 
