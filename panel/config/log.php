@@ -9,7 +9,7 @@ if (mysqli_connect_errno()){
 $date = date("Y-m-d");
 $data = array();
 
-$query = "SELECT `date`, `type`, `content` FROM `log` WHERE `date` = '".$date."' ORDER BY ID ASC LIMIT 15";
+$query = "SELECT `date`, `type`, `content` FROM `log` WHERE `date` = '".$date."' ORDER BY ID ASC";
 $result = mysqli_query($con,$query);
 
 $logs = array();
@@ -19,6 +19,13 @@ foreach ($result as $row) {
 
 $c_logs = count($logs);
 
-echo "<pre>".var_dump($logs)."</pre>";
+for($i = 0; $i<($c_logs-1); $i++)
+  {
+      echo "<tr>";
+      echo "<td class='log-td'>".$logs[$i]["date"]."</td>";
+      echo "<td class='log-td'>".$logs[$i]["type"]."</td>";
+      echo "<td class='log-td'>".$logs[$i]["content"]."</td>";
+      echo "</tr>";
+  }
 
 ?>

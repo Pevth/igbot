@@ -21,6 +21,8 @@ $name = $_SESSION['username'];
   <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@600&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Jura:wght@500&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Alegreya+Sans+SC:wght@500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap" rel="stylesheet">
+
   <script src="https://kit.fontawesome.com/c276789111.js" crossorigin="anonymous"></script>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
   <script type="text/javascript" src="js/jquery-3.6.0.js"></script>
@@ -197,7 +199,9 @@ $name = $_SESSION['username'];
     ?>
 
     <div class="col-lg-4 col-xl-3 col-12 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="p-4 box">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam. Integer feugiat, sem et hendrerit hendrerit, lacus ex scelerisque tortor, in suscipit justo urna sed lacus. Nunc vitae dui quis mi consequat consequat quis a diam. Phasellus mollis odio ut tincidunt facilisis. Etiam ac interdum enim. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Donec est purus, lacinia a eros eu, placerat volutpat neque. Pellentesque tristique pharetra purus.
+      <div class="p-4 box">
+        <p class="upper_letter">Notatki</p>
+        <hr class="my-3">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum egestas ante sapien, vel luctus turpis hendrerit id. Proin at nisl sit amet nulla bibendum dictum sit amet at diam.
 
       </div>
     </div>
@@ -261,13 +265,14 @@ $name = $_SESSION['username'];
       </div>
     </div>
     <div class="col-12 animate__animated animate__fadeIn animate__delay-5s">
-      <div class="box_6 p-4 text-center">
-        <span class="upper_letter">Logi</span>
+      <div class="box_6 p-4">
+        <p class="upper_letter">Logi</p>
         <hr class="my-3">
         <div class="test">
         <table class="table table-borderless">
           <tbody class="log-table">
           <?php include 'config/log.php';?>
+          <script>window.scrollTo(0,document.querySelector(".test").scrollHeight);</script>
           </tbody>
         </table>
       </div>
