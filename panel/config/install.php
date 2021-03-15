@@ -50,6 +50,12 @@ $createQueries = ["CREATE TABLE `config` (
   `f_link` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
 
+"CREATE TABLE `banlist` (
+  `id` int(11) NOT NULL,
+  `user_ig` varchar(50) NOT NULL,
+  `f_name` varchar(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;",
+
 "ALTER TABLE `config`
   ADD PRIMARY KEY (`id`);",
 
@@ -61,6 +67,9 @@ $createQueries = ["CREATE TABLE `config` (
 
 "ALTER TABLE `unfollow`
   ADD PRIMARY KEY (`id`);",
+
+"ALTER TABLE `banlist`
+  ADD PRIMARY KEY (`id`);,"
 
 "ALTER TABLE `config`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
@@ -72,7 +81,11 @@ $createQueries = ["CREATE TABLE `config` (
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
 
 "ALTER TABLE `unfollow`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;",
+
+"ALTER TABLE `banlist`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;"];
+
 
 foreach($createQueries as $createQuery)
   {
